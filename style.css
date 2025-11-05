@@ -1,0 +1,123 @@
+/* -------------------------------
+   RESET & BASE STYLES
+---------------------------------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Outer Page Background (brighter contrast) */
+body {
+  background: radial-gradient(circle at center, #0f1e25, #01080f 80%);
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  padding: 40px 0;
+  font-family: "Bitcount Grid Single", system-ui;
+  color: white;
+}
+
+/* -------------------------------
+   FLOATING PORTFOLIO WRAPPER
+---------------------------------- */
+.portfolio-wrapper {
+  background: #0a0a0a;
+  border-radius: 25px;
+  box-shadow: 0 0 25px rgba(0, 255, 255, 0.25), 0 0 60px rgba(0, 255, 255, 0.08);
+  width: 90%;
+  max-width: 1300px;
+  overflow: hidden;
+  border: 1px solid rgba(0, 255, 255, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.portfolio-wrapper:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 40px rgba(0, 255, 255, 0.35), 0 0 80px rgba(0, 255, 255, 0.1);
+}
+
+/* -------------------------------
+   NAVIGATION BAR
+---------------------------------- */
+#nav-bar {
+  list-style: none;
+  margin: 10px;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  font-family: "Special Elite", system-ui;
+}
+
+#nav-bar a {
+  text-decoration: none;
+  color: white;
+  transition: all 0.3s ease;
+}
+
+#nav-bar a:hover {
+  color: #00eaff;
+  text-shadow: 0 0 10px #00eaff;
+  transform: scale(1.1);
+}
+
+/* -------------------------------
+   INTRODUCTION SECTION
+---------------------------------- */
+#intro-container {
+  width: 100%;
+  padding: 120px 80px 80px 80px;
+  text-align: center;
+  transition: box-shadow 0.5s ease;
+}
+
+#intro-container:hover {
+  box-shadow: 0 0 40px rgba(0, 255, 255, 0.15);
+}
+
+.intro-content {
+  margin-bottom: 20px;
+}
+
+h1.intro-content {
+  font-size: 2rem;
+  color: #00eaff;
+  font-family: "VT323", monospace;
+  letter-spacing: 1.5px;
+  text-shadow: 0 0 8px rgba(0, 255, 255, 0.5);
+}
+
+p.intro-content {
+  font-size: 1.1rem;
+  color: #aaa;
+  line-height: 1.5;
+}
+
+/* -------------------------------
+   RESPONSIVE DESIGN
+---------------------------------- */
+@media (max-width: 768px) {
+  #nav-bar {
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  #intro-container {
+    padding: 80px 20px;
+  }
+
+  h1.intro-content {
+    font-size: 1.5rem;
+  }
+
+  p.intro-content {
+    font-size: 1rem;
+  }
+
+  .portfolio-wrapper {
+    width: 95%;
+    border-radius: 15px;
+  }
+}
