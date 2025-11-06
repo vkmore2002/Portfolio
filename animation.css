@@ -30,7 +30,7 @@
 ----------------------------------- */
 .milestone {
   position: absolute;
-  bottom: 60px;
+  bottom: 150px;
   transform: translateX(-50%);
   font-family: "VT323", monospace;
   font-size: 1.1rem;
@@ -145,7 +145,7 @@
   z-index: 10;
 }
 
-/* Each phase GIF stacked together */
+.character video.phase,
 .character img.phase {
   position: absolute;
   bottom: 0;
@@ -154,6 +154,8 @@
   opacity: 0;
   transition: opacity 0.8s ease-in-out;
   filter: drop-shadow(0 0 4px rgba(0, 255, 255, 0.3));
+  pointer-events: none;
+  border: none;
 }
 
 /* Character movement path */

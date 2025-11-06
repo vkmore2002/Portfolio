@@ -8,6 +8,10 @@
     <!-- Stylesheets -->
     <link rel="stylesheet" href="style.css" />
     <link rel="stylesheet" href="animation.css" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -52,39 +56,115 @@
       </main>
 
       <!-- Race of Life Section -->
+      <!-- Race of Life Section -->
       <section id="race-track">
         <div class="ground"></div>
 
         <!-- Milestones -->
-        <div class="milestone" style="left: 15%">10th Grade – 74.6%</div>
-        <div class="milestone" style="left: 40%">12th Grade – 71.6%</div>
-        <div class="milestone" style="left: 65%">
-          B.Tech (Electronics & Communication) – 77%
-        </div>
+        <div class="milestone" style="left: 15%">Survived HSC with 74.6</div>
+        <div class="milestone" style="left: 40%">Survived SSC with 71.6%</div>
+        <div class="milestone" style="left: 65%">Completed Btech(ECE)- 77%</div>
         <div class="milestone" style="left: 88%">
           Finding My Dream IT Job...
         </div>
 
         <!-- Character Container -->
         <div class="character">
-          <img
-            src="assists/gif/walking.webp"
-            class="phase walk"
-            alt="walking"
-          />
-          <img src="assists/gif/jogging.webp" class="phase jog" alt="jogging" />
-          <img src="assists/gif/running.webp" class="phase run" alt="running" />
-          <img
-            src="assists/gif/riding-scooty.webp"
-            class="phase scooty"
-            alt="scooty"
-          />
+          <video class="phase walk" autoplay loop muted playsinline>
+            <source src="assists/gif/walking.webm" type="video/webm" />
+            <source src="assists/gif/walking.gif" type="image/gif" />
+          </video>
+
+          <video class="phase jog" autoplay loop muted playsinline>
+            <source src="assists/gif/jogging.webm" type="video/webm" />
+            <source src="assists/gif/jogging.gif" type="image/gif" />
+          </video>
+
+          <video class="phase run" autoplay loop muted playsinline>
+            <source src="assists/gif/running.webm" type="video/webm" />
+            <source src="assists/gif/running.gif" type="image/gif" />
+          </video>
+
+          <video class="phase scooty" autoplay loop muted playsinline>
+            <source src="assists/gif/riding-scooty.webm" type="video/webm" />
+            <source src="assists/gif/riding-scooty.gif" type="image/gif" />
+          </video>
         </div>
 
         <div class="trail"></div>
       </section>
 
+      <!-- ABOUT SECTION -->
+      <section id="about">
+        <div class="about-panel">
+          <h2 class="about-title">ABOUT ME</h2>
+          <p class="about-text">
+            I’m <strong>Vivek Harishchandra More</strong> — a passionate
+            developer and explorer of science-driven ideas. I enjoy creating
+            smooth, functional, and meaningful digital experiences through code
+            and design. My journey from academic milestones to building
+            real-world projects has taught me that progress comes from
+            curiosity, patience, and persistence. <br /><br />
+            Outside of coding, I love discovering how science and creativity
+            merge to shape technology’s future. I believe every project is a
+            small experiment — and I’m here to keep experimenting.
+          </p>
+        </div>
+      </section>
+
+      <!-- PROJECTS SECTION -->
+      <section id="projects">
+        <div class="projects-panel">
+          <h2 class="projects-title">Projects</h2>
+
+          <div class="projects-slider">
+            <div class="project-card active">
+              <h3>Portfolio Website</h3>
+              <p>
+                A personal portfolio showcasing my work, journey, and skills
+                with animations and responsive design.
+              </p>
+              <div class="project-links">
+                <a href="#" class="btn">View Code</a>
+                <a href="#" class="btn">Live Demo</a>
+              </div>
+            </div>
+
+            <div class="project-card">
+              <h3>E-Commerce Site</h3>
+              <p>
+                A shopping platform with cart, filtering, and checkout features
+                built with HTML, CSS, and JS.
+              </p>
+              <div class="project-links">
+                <a href="#" class="btn">View Code</a>
+                <a href="#" class="btn">Live Demo</a>
+              </div>
+            </div>
+
+            <div class="project-card">
+              <h3>Sign Language Detection</h3>
+              <p>
+                A machine learning project using TensorFlow & OpenCV that
+                translates sign gestures into text.
+              </p>
+              <div class="project-links">
+                <a href="#" class="btn">View Code</a>
+                <a href="#" class="btn">Live Demo</a>
+              </div>
+            </div>
+
+            <!-- navigation arrows -->
+            <div class="arrow prev">&#10094;</div>
+            <div class="arrow next">&#10095;</div>
+          </div>
+        </div>
+      </section>
+
       <!-- Future Sections (Skills, Projects, Footer, etc.) -->
     </div>
+    <!-- bootstrap linking -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="script.js"></script>
   </body>
 </html>

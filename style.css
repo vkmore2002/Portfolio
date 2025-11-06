@@ -1,15 +1,19 @@
-/* -------------------------------
-   RESET & BASE STYLES
----------------------------------- */
+/* =====================================================
+   1️⃣ RESET & BASE STYLES
+===================================================== */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* Outer Page Background (brighter contrast) */
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background: radial-gradient(circle at center, #0f1e25, #01080f 80%);
+  background-attachment: fixed;
   display: flex;
   justify-content: center;
   align-items: flex-start;
@@ -17,19 +21,21 @@ body {
   padding: 40px 0;
   font-family: "Bitcount Grid Single", system-ui;
   color: white;
+  overflow-x: hidden;
 }
 
-/* -------------------------------
-   FLOATING PORTFOLIO WRAPPER
----------------------------------- */
+/* =====================================================
+   2️⃣ PORTFOLIO WRAPPER (Floating Container)
+===================================================== */
 .portfolio-wrapper {
+  animation: fadeIn 1.5s ease-out;
   background: #0a0a0a;
   border-radius: 25px;
-  box-shadow: 0 0 25px rgba(0, 255, 255, 0.25), 0 0 60px rgba(0, 255, 255, 0.08);
   width: 90%;
   max-width: 1300px;
-  overflow: hidden;
   border: 1px solid rgba(0, 255, 255, 0.1);
+  box-shadow: 0 0 25px rgba(0, 255, 255, 0.25), 0 0 60px rgba(0, 255, 255, 0.08);
+  overflow: hidden;
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -38,9 +44,23 @@ body {
   box-shadow: 0 0 40px rgba(0, 255, 255, 0.35), 0 0 80px rgba(0, 255, 255, 0.1);
 }
 
-/* -------------------------------
-   NAVIGATION BAR
----------------------------------- */
+/* Fade-in entry effect */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.98);
+    filter: blur(2px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+    filter: blur(0);
+  }
+}
+
+/* =====================================================
+   3️⃣ NAVIGATION BAR
+===================================================== */
 #nav-bar {
   list-style: none;
   margin: 10px;
@@ -63,12 +83,12 @@ body {
   transform: scale(1.1);
 }
 
-/* -------------------------------
-   INTRODUCTION SECTION
----------------------------------- */
+/* =====================================================
+   4️⃣ INTRO SECTION
+===================================================== */
 #intro-container {
   width: 100%;
-  padding: 120px 80px 80px 80px;
+  padding: 120px 80px 80px;
   text-align: center;
   transition: box-shadow 0.5s ease;
 }
@@ -95,9 +115,273 @@ p.intro-content {
   line-height: 1.5;
 }
 
+/* Fix unwanted border above race-track */
+#race-track {
+  border-top: none !important;
+  margin-top: -4px;
+}
+
+/* =====================================================
+   5️⃣ ABOUT SECTION
+===================================================== */
+#about {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 100px 0;
+}
+
+.about-panel {
+  background: #0a0a0a;
+  border-radius: 20px;
+  padding: 60px 80px;
+  width: 85%;
+  border: 1px solid rgba(0, 255, 255, 0.1);
+  box-shadow: 0 0 25px rgba(0, 255, 255, 0.25), 0 0 60px rgba(0, 255, 255, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.about-panel:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 40px rgba(0, 255, 255, 0.35), 0 0 80px rgba(0, 255, 255, 0.1);
+}
+
+.about-title {
+  font-family: "VT323", monospace;
+  color: #00eaff;
+  font-size: 2rem;
+  text-align: center;
+  letter-spacing: 2px;
+  text-shadow: 0 0 10px rgba(0, 255, 255, 0.6);
+  margin-bottom: 30px;
+}
+
+.about-text {
+  font-family: "Special Elite", monospace;
+  color: #ccc;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  text-align: center;
+  text-shadow: 0 0 4px rgba(0, 255, 255, 0.1);
+}
+
 /* -------------------------------
-   RESPONSIVE DESIGN
+   PURE CSS PROJECT SLIDER
 ---------------------------------- */
+#projects {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 100px 0;
+}
+
+.projects-panel {
+  background: #0a0a0a;
+  border-radius: 20px;
+  padding: 60px 80px;
+  width: 85%;
+  border: 1px solid rgba(0, 255, 255, 0.1);
+  box-shadow: 0 0 25px rgba(0, 255, 255, 0.25), 0 0 60px rgba(0, 255, 255, 0.08);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Section Title */
+.projects-title {
+  font-family: "VT323", monospace;
+  color: #00eaff;
+  font-size: 2rem;
+  letter-spacing: 2px;
+  text-align: center;
+  text-shadow: 0 0 10px rgba(0, 255, 255, 0.6);
+  margin-bottom: 40px;
+}
+
+/* Slider container */
+.projects-slider {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 420px; /* ✅ Controls vertical centering space */
+}
+
+/* Project Cards */
+.project-card {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.9); /* ✅ True center alignment */
+  opacity: 0;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 20px;
+  padding: 50px 60px;
+  width: 700px; /* ✅ Increased width for better proportion */
+  max-width: 90%;
+  text-align: center;
+  border: 1px solid rgba(0, 255, 255, 0.25);
+  box-shadow: 0 0 20px rgba(0, 255, 255, 0.2);
+  transition: all 0.6s ease;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Active card */
+.project-card.active {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+  pointer-events: auto;
+  z-index: 2;
+  box-shadow: 0 0 35px rgba(0, 255, 255, 0.5);
+  animation: fadeInOut 0.8s ease forwards;
+}
+
+/* Hover effect */
+.project-card:hover {
+  box-shadow: 0 0 45px rgba(0, 255, 255, 0.8);
+  background: rgba(0, 30, 40, 0.25);
+}
+
+/* Text */
+.project-card h3 {
+  color: #00eaff;
+  font-family: "VT323", monospace;
+  font-size: 1.6rem;
+  margin-bottom: 15px;
+  text-shadow: 0 0 10px rgba(0, 255, 255, 0.6);
+}
+
+.project-card p {
+  color: #ccc;
+  font-family: "Special Elite", monospace;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 25px;
+}
+
+/* Buttons */
+.project-links {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.project-links .btn {
+  display: inline-block;
+  padding: 10px 25px;
+  border-radius: 8px;
+  text-decoration: none;
+  color: #00eaff;
+  border: 1px solid #00eaff;
+  background: rgba(0, 255, 255, 0.08);
+  font-family: "Special Elite", monospace;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.2);
+  text-shadow: 0 0 6px rgba(0, 255, 255, 0.7);
+}
+
+.project-links .btn:hover {
+  background: #00eaff;
+  color: #000;
+  border-color: #00eaff;
+  box-shadow: 0 0 15px #00eaff, 0 0 40px rgba(0, 255, 255, 0.6);
+  transform: scale(1.05);
+}
+
+/* Arrows */
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 2rem;
+  color: #00eaff;
+  cursor: pointer;
+  user-select: none;
+  transition: all 0.3s ease;
+  text-shadow: 0 0 10px #00eaff;
+  z-index: 5;
+}
+
+.arrow:hover {
+  transform: translateY(-50%) scale(1.2);
+  text-shadow: 0 0 20px #00eaff, 0 0 40px #00eaff;
+}
+
+.arrow.prev {
+  left: 8%;
+}
+.arrow.next {
+  right: 8%;
+}
+
+/* Animation */
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.9);
+  }
+  50% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .project-card {
+    width: 90%;
+    padding: 30px;
+  }
+  .arrow.prev {
+    left: 5%;
+  }
+  .arrow.next {
+    right: 5%;
+  }
+}
+
+/* =====================================================
+   FIXED — ULTRA-SMOOTH FADE-IN TRANSITION
+===================================================== */
+
+/* Disable Bootstrap’s abrupt opacity switch */
+.carousel-item {
+  opacity: 0;
+  transition: none !important;
+}
+
+/* Custom fade control */
+.carousel-item.active {
+  opacity: 1;
+  animation: fadeInNeon 1.2s ease-out forwards;
+}
+
+@keyframes fadeInNeon {
+  0% {
+    opacity: 0;
+    transform: translateY(10px) scale(0.98);
+    box-shadow: 0 0 0 rgba(0, 255, 255, 0);
+  }
+  50% {
+    opacity: 0.7;
+    box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    box-shadow: 0 0 25px rgba(0, 255, 255, 0.5);
+  }
+}
+
+/* =====================================================
+   7️⃣ RESPONSIVE STYLES
+===================================================== */
 @media (max-width: 768px) {
   #nav-bar {
     flex-wrap: wrap;
@@ -120,4 +404,52 @@ p.intro-content {
     width: 95%;
     border-radius: 15px;
   }
+
+  .about-panel,
+  .projects-panel {
+    width: 90%;
+    padding: 40px 25px;
+  }
+
+  .about-title,
+  .projects-title {
+    font-size: 1.6rem;
+  }
+
+  .about-text,
+  .project-card p {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  .project-card {
+    width: 90%;
+    padding: 30px;
+  }
+}
+
+/* ==============================
+   Fix for Invisible Project Buttons
+============================== */
+.project-links .btn {
+  display: inline-block;
+  padding: 10px 25px;
+  border-radius: 8px;
+  text-decoration: none;
+  color: #00eaff; /* visible by default */
+  border: 1px solid #00eaff;
+  background: rgba(0, 255, 255, 0.08); /* faint glow background */
+  font-family: "Special Elite", monospace;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 10px rgba(0, 255, 255, 0.2);
+  text-shadow: 0 0 6px rgba(0, 255, 255, 0.7);
+}
+
+.project-links .btn:hover {
+  background: #00eaff;
+  color: #000;
+  border-color: #00eaff;
+  box-shadow: 0 0 15px #00eaff, 0 0 40px rgba(0, 255, 255, 0.6);
+  transform: scale(1.05);
 }
